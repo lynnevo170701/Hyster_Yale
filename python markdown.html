@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Hyster-Yale</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="python markdown_files/libs/clipboard/clipboard.min.js"></script>
+<script src="python markdown_files/libs/quarto-html/quarto.js"></script>
+<script src="python markdown_files/libs/quarto-html/popper.min.js"></script>
+<script src="python markdown_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="python markdown_files/libs/quarto-html/anchor.min.js"></script>
+<link href="python markdown_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="python markdown_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="python markdown_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="python markdown_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="python markdown_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Hyster-Yale</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="data-understanding" class="level2">
+<h2 class="anchored" data-anchor-id="data-understanding">Data understanding</h2>
+<p>Load some packages</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">8</span>})</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>pd.options.mode.chained_assignment <span class="op">=</span> <span class="va">None</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Specify the directory where the CSV files are located</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>directory <span class="op">=</span> <span class="vs">r"D:\OneDrive - HAN\Minor data-driven decision making\project\dataset\Data Truck energy"</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_csv_file(file_path):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  data <span class="op">=</span> pd.read_csv(file_path) </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Read in the two datasets and store them in a list</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>datasets <span class="op">=</span> [] </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> os.listdir(directory): </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> filename.endswith(<span class="st">".csv"</span>): </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    file_path <span class="op">=</span> os.path.join(directory, filename)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    datasets.append(read_csv_file(file_path)) </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(datasets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[      timestamps   UNIX_Time        Date      Time  TruckState  \
+0              0  1669910406  01/12/2022  16:00:06           3   
+1              1  1669910407  01/12/2022   00:07.2           3   
+2              2  1669910408  01/12/2022   00:08.2           3   
+3              3  1669910409  01/12/2022   00:09.2           3   
+4              4  1669910410  01/12/2022   00:10.2           3   
+...          ...         ...         ...       ...         ...   
+6283        6283  1669916686  01/12/2022   44:45.6           4   
+6284        6284  1669916686  01/12/2022   44:45.6           4   
+6285        6285  1669916686  01/12/2022   44:45.6           4   
+6286        6286  1669916686  01/12/2022   44:45.6           4   
+6287        6287  1669916686  01/12/2022   44:45.6           4   
+
+      GPS_speed(m/s)  VehicleSpeed(mph)  loadHeight    GPS_x   GPS_y  ...  \
+0              0.000               0.00    4029.600 -118.259  33.738  ...   
+1              0.000               0.00    4274.406 -118.259  33.738  ...   
+2              0.000               0.00    4439.957 -118.259  33.738  ...   
+3              0.000               0.00    4688.529 -118.259  33.738  ...   
+4              0.056               0.62    4802.400 -118.259  33.738  ...   
+...              ...                ...         ...      ...     ...  ...   
+6283           0.000               0.00    5464.800 -118.258  33.741  ...   
+6284           0.000               0.00    5464.800 -118.258  33.741  ...   
+6285           0.000               0.00    5464.800 -118.258  33.741  ...   
+6286           0.000               0.00    5464.800 -118.258  33.741  ...   
+6287           0.000               0.00    5464.800 -118.258  33.741  ...   
+
+      SecondaryMotor_Current(A)  ThirdMotor_Speed(RPM)  ThirdMotor_Torque(Nm)  \
+0                       109.906               2990.000                180.772   
+1                        30.524               2959.026                 52.960   
+2                       104.530               1987.835                401.177   
+3                        18.764               2524.550                 32.287   
+4                        -9.801                843.705                -89.129   
+...                         ...                    ...                    ...   
+6283                     -0.040                  0.000                 -0.164   
+6284                     -0.040                  0.000                 -0.164   
+6285                     -0.040                  0.000                 -0.164   
+6286                     -0.040                  0.000                 -0.164   
+6287                     -0.040                  0.000                 -0.164   
+
+      ThirdMotor_Voltage(V)  ThirdMotor_Current(A)  DriveMotor_Speed(RPM)  \
+0                   695.195                 88.989                    0.0   
+1                   714.199                 25.773                    0.0   
+2                   691.288                131.569                    0.0   
+3                   710.725                 13.406                    0.0   
+4                   715.737                -10.050                 -270.0   
+...                     ...                    ...                    ...   
+6283                693.001                 -0.040                    0.0   
+6284                693.001                 -0.040                    0.0   
+6285                693.001                 -0.040                    0.0   
+6286                693.001                 -0.040                    0.0   
+6287                693.001                 -0.040                    0.0   
+
+      DriveMotor_Torque(Nm)  DriveMotor_Voltage(V)  DriveMotor_Current(A)  \
+0                     0.000                700.451                  4.750   
+1                    -0.422                711.159                  4.582   
+2                   -44.389                696.857                  3.687   
+3                  -596.517                712.208                 13.381   
+4                  -785.278                719.746                 37.628   
+...                     ...                    ...                    ...   
+6283                  0.000                699.400                  4.600   
+6284                  0.000                699.400                  4.600   
+6285                  0.000                699.400                  4.600   
+6286                  0.000                699.400                  4.600   
+6287                  0.000                699.400                  4.600   
+
+      H2Consumption  
+0          0.706444  
+1          0.706444  
+2          0.706444  
+3          0.706444  
+4          0.706444  
+...             ...  
+6283      -0.000065  
+6284      -0.000065  
+6285      -0.000065  
+6286      -0.000065  
+6287      -0.000065  
+
+[6288 rows x 61 columns],        timestamps     UNIX_Time        Date             Time  TruckState  \
+0             0.0  1.670515e+09  2022-12-08         16:00:07           3   
+1             1.0  1.670515e+09  2022-12-08  16:00:08.059000           3   
+2             2.0  1.670515e+09  2022-12-08  16:00:09.058000           3   
+3             3.0  1.670515e+09  2022-12-08  16:00:10.056999           3   
+4             4.0  1.670515e+09  2022-12-08  16:00:11.042000           3   
+...           ...           ...         ...              ...         ...   
+10434     10434.0  1.670526e+09  2022-12-08  18:54:01.676999           4   
+10435     10435.0  1.670526e+09  2022-12-08  18:54:02.670000           4   
+10436     10436.0  1.670526e+09  2022-12-08  18:54:03.661999           4   
+10437     10437.0  1.670526e+09  2022-12-08  18:54:04.660999           4   
+10438     10438.0  1.670526e+09  2022-12-08  18:54:05.658999           4   
+
+       GPS_speed(m/s)  VehicleSpeed(mph)  loadHeight    GPS_x   GPS_y  ...  \
+0               0.611              3.730    5216.400 -118.258  33.740  ...   
+1               0.554              3.730    5216.400 -118.258  33.740  ...   
+2               0.497              3.110    5339.621 -118.258  33.740  ...   
+3               0.032              1.256    5560.503 -118.258  33.740  ...   
+4               0.532              0.000    5823.600 -118.258  33.740  ...   
+...               ...                ...         ...      ...     ...  ...   
+10434           0.000              0.000    5851.200 -118.262  33.732  ...   
+10435           0.000              0.000    5851.200 -118.262  33.732  ...   
+10436           0.000              0.000    5851.200 -118.262  33.732  ...   
+10437           0.000              0.000    5851.200 -118.262  33.732  ...   
+10438           0.000              0.000    5851.200 -118.262  33.732  ...   
+
+       SecondaryMotor_Current(A)  ThirdMotor_Speed(RPM)  \
+0                         -0.600               -100.000   
+1                        129.803                959.503   
+2                         56.075               3148.614   
+3                         67.576               3150.000   
+4                          8.555               2424.206   
+...                          ...                    ...   
+10434                     -0.040                  0.000   
+10435                     -0.040                  0.000   
+10436                     -0.040                  0.000   
+10437                     -0.040                  0.000   
+10438                     -0.040                  0.000   
+
+       ThirdMotor_Torque(Nm)  ThirdMotor_Voltage(V)  ThirdMotor_Current(A)  \
+0                      4.282                694.523                 -0.439   
+1                    680.597                690.294                113.989   
+2                    382.831                683.798                196.556   
+3                    396.883                680.889                206.159   
+4                    313.413                700.996                124.433   
+...                      ...                    ...                    ...   
+10434                  0.085                706.582                 -0.040   
+10435                 -0.210                702.746                 -0.040   
+10436                  0.272                698.892                 -0.040   
+10437                 -0.030                695.197                 -0.040   
+10438                  0.204                691.377                 -0.040   
+
+       DriveMotor_Speed(RPM)  DriveMotor_Torque(Nm)  DriveMotor_Voltage(V)  \
+0                  -1080.000              -1052.688                697.901   
+1                  -1110.000                 22.730                705.631   
+2                   -930.000                 -0.001                687.913   
+3                   -503.926                  0.000                686.456   
+4                   -100.000                  0.000                704.501   
+...                      ...                    ...                    ...   
+10434                  0.000                  0.000                714.409   
+10435                  0.000                  0.000                710.022   
+10436                  0.000                  0.000                707.030   
+10437                  0.000                  0.000                702.844   
+10438                  0.000                  0.000                700.302   
+
+       DriveMotor_Current(A)  H2Consumption  
+0                    177.312       1.358889  
+1                     43.008       1.358889  
+2                      3.746       1.358889  
+3                      3.603       1.358889  
+4                      3.812       1.358889  
+...                      ...            ...  
+10434                  4.699       0.000764  
+10435                  4.750       0.000764  
+10436                  4.836       0.000764  
+10437                  4.714       0.000764  
+10438                  4.851       0.000764  
+
+[10439 rows x 61 columns]]</code></pre>
+</div>
+</div>
+<p>Now, we will inspect the data to understand it more</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>datasets[<span class="dv">0</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>timestamps</th>
+      <th>UNIX_Time</th>
+      <th>TruckState</th>
+      <th>GPS_speed(m/s)</th>
+      <th>VehicleSpeed(mph)</th>
+      <th>loadHeight</th>
+      <th>GPS_x</th>
+      <th>GPS_y</th>
+      <th>GPS_z</th>
+      <th>calcContainerCount</th>
+      <th>...</th>
+      <th>SecondaryMotor_Current(A)</th>
+      <th>ThirdMotor_Speed(RPM)</th>
+      <th>ThirdMotor_Torque(Nm)</th>
+      <th>ThirdMotor_Voltage(V)</th>
+      <th>ThirdMotor_Current(A)</th>
+      <th>DriveMotor_Speed(RPM)</th>
+      <th>DriveMotor_Torque(Nm)</th>
+      <th>DriveMotor_Voltage(V)</th>
+      <th>DriveMotor_Current(A)</th>
+      <th>H2Consumption</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>6288.000000</td>
+      <td>6.288000e+03</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>...</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+      <td>6288.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>3143.500000</td>
+      <td>1.669914e+09</td>
+      <td>5.153308</td>
+      <td>0.537122</td>
+      <td>1.286018</td>
+      <td>5230.855758</td>
+      <td>-118.258512</td>
+      <td>33.738675</td>
+      <td>16.260773</td>
+      <td>42.699771</td>
+      <td>...</td>
+      <td>15.717269</td>
+      <td>1448.485536</td>
+      <td>33.083470</td>
+      <td>702.433387</td>
+      <td>15.628827</td>
+      <td>183.679504</td>
+      <td>27.240294</td>
+      <td>706.845642</td>
+      <td>36.411809</td>
+      <td>0.510169</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1815.333578</td>
+      <td>1.815541e+03</td>
+      <td>2.474756</td>
+      <td>0.906580</td>
+      <td>1.963434</td>
+      <td>1059.172402</td>
+      <td>0.001236</td>
+      <td>0.002052</td>
+      <td>5.328288</td>
+      <td>24.812854</td>
+      <td>...</td>
+      <td>36.316855</td>
+      <td>1275.888161</td>
+      <td>163.149425</td>
+      <td>21.289844</td>
+      <td>57.081646</td>
+      <td>660.601723</td>
+      <td>492.022684</td>
+      <td>21.345849</td>
+      <td>59.229671</td>
+      <td>0.470130</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>1.669910e+09</td>
+      <td>3.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2594.400000</td>
+      <td>-118.261000</td>
+      <td>33.735000</td>
+      <td>4.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>-56.791000</td>
+      <td>-920.576000</td>
+      <td>-826.384000</td>
+      <td>607.585000</td>
+      <td>-162.547000</td>
+      <td>-1440.000000</td>
+      <td>-1932.708000</td>
+      <td>608.764000</td>
+      <td>-190.717000</td>
+      <td>-0.053333</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1571.750000</td>
+      <td>1.669912e+09</td>
+      <td>3.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4554.000000</td>
+      <td>-118.260000</td>
+      <td>33.737000</td>
+      <td>13.000000</td>
+      <td>20.000000</td>
+      <td>...</td>
+      <td>-0.356000</td>
+      <td>0.000000</td>
+      <td>-53.365500</td>
+      <td>690.121750</td>
+      <td>-13.672000</td>
+      <td>0.000000</td>
+      <td>-0.052250</td>
+      <td>694.390500</td>
+      <td>4.600000</td>
+      <td>-0.000065</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>3143.500000</td>
+      <td>1.669914e+09</td>
+      <td>3.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5321.061000</td>
+      <td>-118.258000</td>
+      <td>33.739000</td>
+      <td>16.000000</td>
+      <td>43.000000</td>
+      <td>...</td>
+      <td>-0.024000</td>
+      <td>1608.578000</td>
+      <td>11.373000</td>
+      <td>701.220500</td>
+      <td>-0.044000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>705.688500</td>
+      <td>5.142500</td>
+      <td>0.706444</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>4715.250000</td>
+      <td>1.669915e+09</td>
+      <td>8.000000</td>
+      <td>0.715000</td>
+      <td>1.860000</td>
+      <td>6044.400000</td>
+      <td>-118.257000</td>
+      <td>33.741000</td>
+      <td>18.000000</td>
+      <td>66.000000</td>
+      <td>...</td>
+      <td>5.697750</td>
+      <td>2768.263000</td>
+      <td>49.828500</td>
+      <td>721.302500</td>
+      <td>14.287500</td>
+      <td>320.000000</td>
+      <td>185.646250</td>
+      <td>725.801500</td>
+      <td>51.013250</td>
+      <td>0.931333</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>6287.000000</td>
+      <td>1.669917e+09</td>
+      <td>8.000000</td>
+      <td>6.227000</td>
+      <td>13.670000</td>
+      <td>7424.400000</td>
+      <td>-118.257000</td>
+      <td>33.742000</td>
+      <td>30.000000</td>
+      <td>80.000000</td>
+      <td>...</td>
+      <td>165.223000</td>
+      <td>3280.724000</td>
+      <td>779.993000</td>
+      <td>745.222000</td>
+      <td>328.172000</td>
+      <td>3825.022000</td>
+      <td>1843.100000</td>
+      <td>748.483000</td>
+      <td>313.538000</td>
+      <td>1.193111</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 58 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>datasets[<span class="dv">0</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>(6288, 61)</code></pre>
+</div>
+</div>
+<p>The first file has <strong>6288 rows and 61 variables</strong>. Each row represents the behaviour of hydrogen fuel cell and battery used in this truck in <strong>one second</strong>. The description of each variable is:</p>
+<ul>
+<li><code>timestamps</code>: unit of measurement is second</li>
+<li><code>UNIX_Time</code>: date and time representation widely used in computing. It measures time by the number of seconds since 00:00:00 on 1 January 1970 till the</li>
+<li><code>Date</code>: date when dataset is created</li>
+<li><code>Time</code>: specific time (HH:MM:SS)</li>
+<li><code>TruckState</code>: the state where the truck stands</li>
+<li><code>GPS_speed(m/s)</code>: speed logged by GPS. Unit: meters per second</li>
+<li><code>VehicleSpeed(mph)</code>: calculates motor rotations. Unit: miles per hour</li>
+<li><code>loadHeight</code>: the height added after cyclinder is extended. Unit: milimeters</li>
+<li><code>GPS_X</code>, <code>GPS_y</code>, <code>GPS_z</code>: the loation of forklift</li>
+<li><code>calcContainerCount</code>: the number of containers the forklift loads</li>
+<li><code>BatteryCurrent(A)</code>, <code>BatteryVoltage(V)</code>: two electrical parameters of a battery
+<ul>
+<li><p><code>BatteryCurrent(A)</code>: A positive battery current value indicates that the battery is being charged, while a negative value indicates that the battery is being discharged.</p></li>
+<li><p><code>BatteryVoltage(V)</code>: the amount of energy stored in the battery.</p></li>
+</ul></li>
+<li><code>BatteryPackSoC(%)</code>: Battery state of charge. This measure the amount of energy that remains in a battery pack as a percentage of its total capacity.</li>
+<li><code>LowCellVoltage(mV)</code> and <code>HighCellVoltage(mV)</code>: the lowest and highest voltage measured across all cells of the battery at a specific of time.</li>
+<li><code>LowCellTemp(C)</code> and <code>HighCellTemp(C)</code>: the lowest and highest temperature measured across all cells of the battery at a specific of time.</li>
+<li><code>BatteryPackSoH(%)</code>: the overall health and performance of a battery pack against the original capacity. It is used to predict the remaining useful life of the battery pack.</li>
+<li>The column from <code>Drive_PCBTemperature(C)</code> to <code>DCDC2_OutputVoltage(V)</code> is to control the performance and health of the battery to optimize the lifespan and safety of the battery.</li>
+<li><code>LeftFCVoltage(V)</code>: the voltage (in volts) of the left fuel cell</li>
+<li><code>LeftFCCurrent(A)</code>: The current flows from the fuel cell through an external circuit to power a device or charge a battery</li>
+<li><code>LeftFCStackHours</code>: the amount of time that the left fuel cell stack in a hydrogen fuel cell system has been in operation</li>
+<li><code>LeftFCStatus</code>: the health performance of left FC</li>
+<li><code>RightFCVoltage(V)</code>, <code>RightFCCurrent(A)</code>, <code>RightFCStackHours</code> and <code>RightFCStatus</code> are the same but it is measured by right fuel cells</li>
+<li><code>Odometer(Miles)</code>: the total distance traveled by the forklift measured in Miles.</li>
+<li><code>Load</code>: <span style="color:red"><strong>load weight of a container measured in kg???</strong></span></li>
+<li><code>H2SoC(%)</code>: Hydrogen state of charge. It measures the amount of hydrogen remaining in the fuel cell stack, expressed as a percentage of the maximum capacity.</li>
+<li>The columns from <code>PrimaryMotor_Speed(RPM)</code> to <code>DriveMotor_Current(A)</code> are used to measure <span style="color:red"><strong>???</strong></span></li>
+<li><code>H2Consumption</code>: measures the amount of H2 in the unit grams/minute</li>
+</ul>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>datasets[<span class="dv">0</span>].info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 6288 entries, 0 to 6287
+Data columns (total 61 columns):
+ #   Column                              Non-Null Count  Dtype  
+---  ------                              --------------  -----  
+ 0   timestamps                          6288 non-null   int64  
+ 1   UNIX_Time                           6288 non-null   int64  
+ 2   Date                                6288 non-null   object 
+ 3   Time                                6288 non-null   object 
+ 4   TruckState                          6288 non-null   int64  
+ 5   GPS_speed(m/s)                      6288 non-null   float64
+ 6   VehicleSpeed(mph)                   6288 non-null   float64
+ 7   loadHeight                          6288 non-null   float64
+ 8   GPS_x                               6288 non-null   float64
+ 9   GPS_y                               6288 non-null   float64
+ 10  GPS_z                               6288 non-null   float64
+ 11  calcContainerCount                  6288 non-null   float64
+ 12  BatteryCurrent(A)                   6288 non-null   float64
+ 13  BatteryVoltage(V)                   6288 non-null   float64
+ 14  BatteryPackSoC(%)                   6288 non-null   int64  
+ 15  LowCellVoltage(mV)                  6288 non-null   int64  
+ 16  HighCellVoltage(mV)                 6288 non-null   int64  
+ 17  LowCellTemp(C)                      6288 non-null   float64
+ 18  HighCellTemp(C)                     6288 non-null   float64
+ 19  BatteryPackSoH(%)                   6288 non-null   int64  
+ 20  Drive_PCBTemperature(C)             6288 non-null   float64
+ 21  PriHydMtr_MaxMotorTemperature(C)    6288 non-null   float64
+ 22  PriHydMtr_MaxModuleTemperature(C)   6288 non-null   float64
+ 23  SecHydMtr_MaxMotorTemperature(C)    6288 non-null   float64
+ 24  SecHydMtr_MaxModuleTemperature(C)   6288 non-null   float64
+ 25  TertHydMtr_MaxMotorTemperature(C)   6288 non-null   float64
+ 26  TertHydMtr_MaxModuleTemperature(C)  6288 non-null   float64
+ 27  Drive_MotorTemp(C)                  6288 non-null   float64
+ 28  DCDC1_OutputCurrent(A)              6288 non-null   float64
+ 29  DCDC1_OutputVoltage(V)              6288 non-null   float64
+ 30  DCDC2_OutputCurrent(A)              6288 non-null   float64
+ 31  DCDC2_OutputVoltage(V)              6288 non-null   float64
+ 32  LeftFCVoltage(V)                    6288 non-null   float64
+ 33  LeftFCCurrent(A)                    6288 non-null   float64
+ 34  LeftFCStackHours                    6288 non-null   int64  
+ 35  LeftFCStatus                        6288 non-null   int64  
+ 36  RightFCVoltage(V)                   6288 non-null   float64
+ 37  RightFCCurrent(A)                   6288 non-null   float64
+ 38  RightFCStackHours                   6288 non-null   int64  
+ 39  RightFCStatus                       6288 non-null   int64  
+ 40  Odometer(Miles)                     6288 non-null   float64
+ 41  Load                                6288 non-null   float64
+ 42  H2SoC(%)                            6288 non-null   float64
+ 43  cellBalancingActive                 6288 non-null   bool   
+ 44  PrimaryMotor_Speed(RPM)             6288 non-null   float64
+ 45  PrimaryMotor_Torque(Nm)             6288 non-null   float64
+ 46  PrimaryMotor_Voltage(V)             6288 non-null   float64
+ 47  PrimaryMotor_Current(A)             6288 non-null   float64
+ 48  SecondaryMotor_Speed(RPM)           6288 non-null   float64
+ 49  SecondaryMotor_Torque(Nm)           6288 non-null   float64
+ 50  SecondaryMotor_Voltage(V)           6288 non-null   float64
+ 51  SecondaryMotor_Current(A)           6288 non-null   float64
+ 52  ThirdMotor_Speed(RPM)               6288 non-null   float64
+ 53  ThirdMotor_Torque(Nm)               6288 non-null   float64
+ 54  ThirdMotor_Voltage(V)               6288 non-null   float64
+ 55  ThirdMotor_Current(A)               6288 non-null   float64
+ 56  DriveMotor_Speed(RPM)               6288 non-null   float64
+ 57  DriveMotor_Torque(Nm)               6288 non-null   float64
+ 58  DriveMotor_Voltage(V)               6288 non-null   float64
+ 59  DriveMotor_Current(A)               6288 non-null   float64
+ 60  H2Consumption                       6288 non-null   float64
+dtypes: bool(1), float64(47), int64(11), object(2)
+memory usage: 2.9+ MB</code></pre>
+</div>
+</div>
+</section>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
+<p>After walking through all the variables of the dataset, I select only relevant data for further analysis and aligned with the business understanding. I subset the first hour from the dataset.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>training_data <span class="op">=</span> datasets[<span class="dv">1</span>].iloc[<span class="dv">0</span>:<span class="dv">3601</span>, :]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>columns_to_select <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">32</span>,<span class="dv">33</span>,<span class="dv">36</span>,<span class="dv">37</span>,<span class="dv">40</span>,<span class="dv">41</span>,<span class="dv">42</span>,<span class="dv">60</span>]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>training_data <span class="op">=</span> training_data.iloc[:, columns_to_select] </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(training_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      timestamps  VehicleSpeed(mph)  loadHeight  calcContainerCount  \
+0            0.0              3.730    5216.400                 1.0   
+1            1.0              3.730    5216.400                 1.0   
+2            2.0              3.110    5339.621                 1.0   
+3            3.0              1.256    5560.503                 1.0   
+4            4.0              0.000    5823.600                 1.0   
+...          ...                ...         ...                 ...   
+3596      3596.0              1.860    5817.974                48.0   
+3597      3597.0              1.860    5541.855                48.0   
+3598      3598.0              1.240    5216.400                48.0   
+3599      3599.0              0.620    4934.603                48.0   
+3600      3600.0              0.000    4692.000                48.0   
+
+      BatteryCurrent(A)  BatteryVoltage(V)  BatteryPackSoC(%)  \
+0               -60.000            700.000                 58   
+1               -92.383            696.075                 58   
+2              -127.525            692.538                 58   
+3              -138.850            692.000                 58   
+4              -162.863            688.117                 58   
+...                 ...                ...                ...   
+3596             41.104            724.401                 62   
+3597             67.000            728.000                 62   
+3598            129.603            736.000                 62   
+3599            135.000            736.000                 62   
+3600            134.534            738.213                 62   
+
+      LeftFCVoltage(V)  LeftFCCurrent(A)  RightFCVoltage(V)  \
+0              182.630           236.820            181.400   
+1              182.309           237.464            181.145   
+2              182.121           238.892            181.108   
+3              181.998           239.960            180.920   
+4              181.851           239.788            180.646   
+...                ...               ...                ...   
+3596           185.054           204.802            184.911   
+3597           185.545           204.150            184.919   
+3598           185.351           203.389            185.358   
+3599           185.685           202.380            185.922   
+3600           185.855           201.360            186.366   
+
+      RightFCCurrent(A)  Odometer(Miles)       Load  H2SoC(%)  H2Consumption  
+0               236.580            0.000  28081.462    69.310       1.358889  
+1               237.600            0.001  28081.462    69.335       1.358889  
+2               238.840            0.002  28081.462    69.310       1.358889  
+3               240.498            0.003  28081.462    69.310       1.358889  
+4               240.772            0.003  28081.462    69.310       1.358889  
+...                 ...              ...        ...       ...            ...  
+3596            205.986            1.160  11386.533    53.922       1.200444  
+3597            205.179            1.160  11386.533    53.990       1.200444  
+3598            204.271            1.161  11386.533    53.937       1.200444  
+3599            202.575            1.161  11386.533    53.910       1.200444  
+3600            201.446            1.161  11386.533    53.975       1.171111  
+
+[3601 rows x 15 columns]</code></pre>
+</div>
+</div>
+<p>To calculate the energy used by forklift, I will calculate the power for each row (each second) and sum them up. The battery current is fluctuating between positive and negative values, the integral will cancel out some of the positive and negative energy contributions, resulting in an inaccurate total energy calculation. I calculate the absolute value of the battery current.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>training_data[<span class="st">'BatteryCurrentAbs'</span>] <span class="op">=</span> training_data[<span class="st">'BatteryCurrent(A)'</span>].<span class="bu">abs</span>()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>training_data[<span class="st">'Power'</span>] <span class="op">=</span> training_data[<span class="st">'BatteryCurrentAbs'</span>] <span class="op">*</span> training_data[<span class="st">'BatteryVoltage(V)'</span>]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>total_power <span class="op">=</span> training_data[<span class="st">'Power'</span>].<span class="bu">sum</span>()</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>total_energy <span class="op">=</span> total_power <span class="op">/</span> <span class="dv">3600</span> <span class="co">#divide this total power output by 3600 to convert from watt-seconds to watt-hours</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Total energy:'</span>, <span class="bu">round</span>(total_energy, <span class="dv">2</span>), <span class="st">'Wh'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total energy: 63337.18 Wh</code></pre>
+</div>
+</div>
+<p>To calculate the energy generated by the hydrogen fuel cell, I will calculate the energy used by the left fuel cell and right fuel cell and sum them up</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>training_data[<span class="st">'LeftEnergy'</span>] <span class="op">=</span> (training_data[<span class="st">'LeftFCVoltage(V)'</span>] <span class="op">*</span> training_data[<span class="st">'LeftFCCurrent(A)'</span>])</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>training_data[<span class="st">'RightEnergy'</span>] <span class="op">=</span> (training_data[<span class="st">'RightFCVoltage(V)'</span>] <span class="op">*</span> training_data[<span class="st">'RightFCCurrent(A)'</span>])</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>hydrogen_energy <span class="op">=</span> (training_data[<span class="st">'LeftEnergy'</span>].<span class="bu">sum</span>() <span class="op">+</span> training_data[<span class="st">'RightEnergy'</span>].<span class="bu">sum</span>()) <span class="op">/</span> <span class="dv">3600</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Total energy used by both fuel cells: </span><span class="sc">{:.2f}</span><span class="st"> kWh'</span>.<span class="bu">format</span>(hydrogen_energy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total energy used by both fuel cells: 75157.01 kWh</code></pre>
+</div>
+</div>
+<p>Now, I will visualize the data</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>nx <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>ny <span class="op">=</span> <span class="dv">9</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(ny, nx, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>selected_cols <span class="op">=</span> [<span class="st">'VehicleSpeed(mph)'</span>, <span class="st">'loadHeight'</span>, <span class="st">'calcContainerCount'</span>, <span class="st">'Power'</span>, <span class="st">'Odometer(Miles)'</span>, <span class="st">'Load'</span>, <span class="st">'H2Consumption'</span>, <span class="st">'LeftEnergy'</span>, <span class="st">'RightEnergy'</span>]</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, col <span class="kw">in</span> <span class="bu">enumerate</span>(selected_cols):</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  ax <span class="op">=</span> axs[<span class="bu">int</span>(i <span class="op">/</span> nx)]</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  sns.scatterplot(data<span class="op">=</span>training_data, x<span class="op">=</span><span class="st">'timestamps'</span>, y<span class="op">=</span>col, ax<span class="op">=</span>ax, linewidth<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'b'</span>, s<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  ax.text(<span class="fl">.01</span>, <span class="fl">.99</span>, col, ha<span class="op">=</span><span class="st">'left'</span>, va<span class="op">=</span><span class="st">'top'</span>, transform<span class="op">=</span>ax.transAxes, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  ax.set_ylabel(<span class="va">None</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  ax.set_xlabel(<span class="st">"Time (seconds)"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelsize <span class="op">=</span> <span class="dv">8</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>plt.subplots_adjust(hspace<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="python%20markdown_files/figure-html/cell-11-output-1.png" width="1148" height="765"></p>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
